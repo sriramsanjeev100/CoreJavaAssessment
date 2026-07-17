@@ -8,13 +8,16 @@ public class CompanyMain
 
         Department department = new Department(101, "Human Resources");
 
-        Manager manager = new Manager(1001,"Rahul",45000,address,department);
+        Manager manager = new Manager(1001,"Rahul",50000,10000,address,department);
+
+        ContractEmployee contract = new ContractEmployee(1002,"Sriram",160,200,address);
 
         Project project = new Project(201, "Company Management System");
 
+        System.out.println("Manager Details");
         System.out.println("Employee ID : " + manager.getEmpId());
         System.out.println("Employee Name : " + manager.getName());
-        System.out.println("Employee Salary : " + manager.getSalary());
+//        System.out.println("Employee Salary : " + manager.getSalary());
 
         System.out.println("City : " + manager.getAddress().getCity());
         System.out.println("State : " + manager.getAddress().getState());
@@ -24,5 +27,15 @@ public class CompanyMain
         System.out.println("Department Name : " + manager.getDepartment().getDepartmentName());
 
         manager.workOnProject(project);
+        System.out.println("Manager Salary : " + manager.calculateSalary());
+
+        System.out.println();
+
+        System.out.println("Contract Employee Details");
+        System.out.println("Employee ID : " + contract.getEmpId());
+        System.out.println("Employee Name : " + contract.getName());
+        System.out.println("Hours Worked : " + contract.getHoursWorked());
+        System.out.println("Hourly Rate : " + contract.getHourlyRate());
+        System.out.println("Contract Employee Salary : " + contract.calculateSalary());
     }
 }

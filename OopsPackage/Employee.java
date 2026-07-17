@@ -1,6 +1,6 @@
 package OopsPackage;
 
-class Employee
+abstract class Employee
 {
     private int empId;
     private String name;
@@ -19,6 +19,11 @@ class Employee
     {
         this(empId, name);
         this.salary = salary;
+    }
+
+    public Employee(int empId, String name, Address address) {
+        this(empId, name);
+        this.address = address;
     }
 
     public Employee(int empId, String name, double salary, Address address)
@@ -52,4 +57,6 @@ class Employee
         System.out.println("Employee is working on the following project : ");
         project.displayProjectDetails();
     }
+
+    public abstract double calculateSalary();
 }
