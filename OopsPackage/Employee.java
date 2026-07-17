@@ -1,0 +1,43 @@
+package OopsPackage;
+
+class Employee
+{
+    private int empId;
+    private String name;
+    private double salary;
+    private Address address;
+
+    public Employee(int empId, String name, double salary, Address address)
+    {
+        this.empId = empId;
+        this.name = name;
+        this.salary = salary;
+        this.address = address;
+    }
+
+    public int getEmpId()
+    {
+        return empId;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public double getSalary()
+    {
+        return salary;
+    }
+
+    public Address getAddress()
+    {
+        return address;
+    }
+
+    public void workOnProject(Project project)
+    {
+        System.out.println("Employee is working on the following project : ");
+        project.displayProjectDetails();
+    }
+}
