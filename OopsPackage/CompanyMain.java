@@ -17,7 +17,7 @@ public class CompanyMain
         System.out.println("Manager Details");
         System.out.println("Employee ID : " + manager.getEmpId());
         System.out.println("Employee Name : " + manager.getName());
-//        System.out.println("Employee Salary : " + manager.getSalary());
+        System.out.println("Basic Salary : " + manager.getSalary());
 
         System.out.println("City : " + manager.getAddress().getCity());
         System.out.println("State : " + manager.getAddress().getState());
@@ -27,8 +27,8 @@ public class CompanyMain
         System.out.println("Department Name : " + manager.getDepartment().getDepartmentName());
 
         manager.workOnProject(project);
-        System.out.println("Manager Salary : " + manager.calculateSalary());
-
+        System.out.println("Total Salary : " + manager.calculateSalary());
+        System.out.println("Tax : " + manager.calculateTax());
         System.out.println();
 
         System.out.println("Contract Employee Details");

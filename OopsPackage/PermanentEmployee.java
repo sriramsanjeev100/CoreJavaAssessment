@@ -1,6 +1,6 @@
 package OopsPackage;
 
-class PermanentEmployee extends Employee
+class PermanentEmployee extends Employee implements TaxPayable
 {
     private double bonus;
 
@@ -14,5 +14,10 @@ class PermanentEmployee extends Employee
     public double calculateSalary()
     {
         return getSalary() + bonus;
+    }
+
+    @Override
+    public double calculateTax() {
+        return calculateSalary() * 0.12;
     }
 }
