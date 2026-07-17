@@ -7,11 +7,23 @@ class Employee
     private double salary;
     private Address address;
 
-    public Employee(int empId, String name, double salary, Address address)
+    public Employee() { }
+
+    public Employee(int empId, String name)
     {
         this.empId = empId;
         this.name = name;
+    }
+
+    public Employee(int empId, String name, double salary)
+    {
+        this(empId, name);
         this.salary = salary;
+    }
+
+    public Employee(int empId, String name, double salary, Address address)
+    {
+        this(empId,name,salary);
         this.address = address;
     }
 
