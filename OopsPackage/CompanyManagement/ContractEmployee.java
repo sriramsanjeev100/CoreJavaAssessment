@@ -1,4 +1,6 @@
-package OopsPackage;
+package OopsPackage.CompanyManagement;
+
+import OopsPackage.CompanyManagement.Address;
 
 class ContractEmployee extends Employee
 {

@@ -1,4 +1,4 @@
-package OopsPackage;
+package OopsPackage.CompanyManagement;
 
 class Address
 {

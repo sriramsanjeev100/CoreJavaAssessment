@@ -1,4 +1,7 @@
-package OopsPackage;
+package OopsPackage.CompanyManagement;
+
+import OopsPackage.CompanyManagement.Address;
+import OopsPackage.CompanyManagement.Employee;
 
 class PermanentEmployee extends Employee implements TaxPayable
 {
