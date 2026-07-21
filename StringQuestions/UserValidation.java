@@ -34,7 +34,13 @@ public class UserValidation
             validUsername = false;
         }
 
-        //----------------------EMAIL-----------------
+        if (email.contains("@"))
+        {
+            System.out.println("Email is Valid");
+        } else
+        {
+            System.out.println("Email is Invalid");
+        }
 
         boolean upper = false;
         boolean lower = false;

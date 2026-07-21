@@ -12,11 +12,27 @@ public class EmployeeSearch
         String department = sc.nextLine();
 
         System.out.print("Enter Minimum Salary: ");
-        double salary = sc.nextDouble();
+        double minSalary = sc.nextDouble();
 
         System.out.print("Enter Minimum Experience: ");
-        int experience = sc.nextInt();
+        int minExperience = sc.nextInt();
 
         StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM Employee WHERE 1=1");
+
+        if (department != null && !department.isEmpty()) {
+            query.append(" AND Department = '").append(department).append("'");
+        }
+
+        if (minSalary > 0) {
+            query.append(" AND Salary >= ").append(minSalary);
+        }
+
+        if (minExperience > 0) {
+            query.append(" AND Experience >= ").append(minExperience);
+        }
+
+        System.out.println("Generated SQL Query:");
+        System.out.println(query);
     }
 }
