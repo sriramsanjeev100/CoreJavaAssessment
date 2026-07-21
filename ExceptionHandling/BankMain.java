@@ -1,5 +1,5 @@
 package ExceptionHandling;
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BankMain
@@ -9,18 +9,23 @@ public class BankMain
         Scanner sc=new Scanner(System.in);
         BankAccount account = new BankAccount(1001,50000);
 
-        System.out.println("Enter Withdrawal Amount : ");
-        double amount=sc.nextDouble();
-
         try
         {
+            System.out.println("Enter Withdrawal Amount : ");
+            double amount=sc.nextDouble();
             account.withdraw(amount);
+        }
+        catch (InputMismatchException e)
+        {
+            System.out.println("Invalid Input. Enter Numbers Only. ");
         }
         catch (InsufficientBalanceException e)
         {
             System.out.println(e.getMessage());
         }
-
-        sc.close();
+        finally
+        {
+            sc.close();
+        }
     }
 }
