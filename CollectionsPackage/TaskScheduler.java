@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 class Task
 {
-    int taskId;
-    String taskName;
+    private int taskId;
+    private String taskName;
 
     public Task(int taskId, String taskName)
     {
