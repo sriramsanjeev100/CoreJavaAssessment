@@ -26,17 +26,11 @@ public class TelephoneDirectory
         System.out.print("Enter Phone Number to Search : ");
         String phone = sc.nextLine();
 
-        if (directory.containsValue(phone))
+        if (directory.containsKey(phone))
         {
-            for (Map.Entry<String, String> contact : directory.entrySet())
-            {
-                if (contact.getValue().equals(phone))
-                {
-                    System.out.println("Contact Found");
-                    System.out.println("Name : " + contact.getValue());
-                    System.out.println("Phone : " + contact.getKey());
-                }
-            }
+            System.out.println("Contact Found");
+            System.out.println("Name : " + directory.get(phone));
+            System.out.println("Phone : " + phone);
         }
         else
         {
