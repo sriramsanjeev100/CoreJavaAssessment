@@ -26,7 +26,7 @@ public class TelephoneDirectory
         System.out.print("Enter Phone Number to Search : ");
         String phone = sc.nextLine();
 
-        if (directory.containsValue(phone))
+        if (directory.containsKey(phone))
         {
             for (Map.Entry<String, String> contact : directory.entrySet())
             {
