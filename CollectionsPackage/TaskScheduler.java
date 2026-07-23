@@ -99,15 +99,25 @@ public class TaskScheduler
                         System.out.print("Enter Task ID to Cancel : ");
                         int cancelId = sc.nextInt();
 
-                        int i;
-                        for (i = 0; i < tasks.size(); i++) {
+                        Task removeTask = null;
 
-                            if (tasks.get(i).getTaskId() == cancelId)
+                        for (Task task : tasks)
+                        {
+                            if (task.getTaskId() == cancelId)
                             {
-                                tasks.remove(i);
-                                System.out.println("Task Cancelled.");
+                                removeTask = task;
                                 break;
                             }
+                        }
+
+                        if (removeTask != null)
+                        {
+                            tasks.remove(removeTask);
+                            System.out.println("Task Cancelled.");
+                        }
+                        else
+                        {
+                            System.out.println("Task Not Found.");
                         }
                     }
                     break;
