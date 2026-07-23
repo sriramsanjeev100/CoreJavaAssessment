@@ -136,15 +136,29 @@ public class TaskScheduler
                     {
                         System.out.print("Enter Task ID to Search : ");
                         int searchId = sc.nextInt();
-                        int i;
-                        for (i = 0; i < tasks.size(); i++) {
-                            if (tasks.get(i).getTaskId() == searchId) {
-                                System.out.println("Task Found:");
-                                System.out.println(tasks.get(i));
+
+                        Task foundTask = null;
+
+                        for (Task task : tasks)
+                        {
+                            if (task.getTaskId() == searchId)
+                            {
+                                foundTask = task;
                                 break;
                             }
                         }
+
+                        if (foundTask != null)
+                        {
+                            System.out.println("Task Found:");
+                            System.out.println(foundTask);
+                        }
+                        else
+                        {
+                            System.out.println("Task Not Found.");
+                        }
                     }
+                    break;
 
                 case 7:
                     System.out.println("Exiting...");
