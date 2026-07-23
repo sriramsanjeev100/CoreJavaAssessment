@@ -20,6 +20,11 @@ class Task
         return taskId;
     }
 
+    public String getTaskName()
+    {
+        return taskName;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
