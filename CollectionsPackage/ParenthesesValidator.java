@@ -17,23 +17,38 @@ public class ParenthesesValidator
 
         for (char ch : code.toCharArray())
         {
-            if (ch == '(' || ch == '{' || ch == '[')
+            switch (ch)
             {
-                stack.push(ch);
+                case '(':
+                case '{':
+                case '[':
+                    stack.push(ch);
+                    break;
+
+                case ')':
+                case '}':
+                case ']':
+                    if (stack.isEmpty())
+                    {
+                        valid = false;
+                        break;
+                    }
+
+                    char top = stack.pop();
+
+                    if ((ch == ')' && top != '(') || (ch == '}' && top != '{') || (ch == ']' && top != '['))
+                    {
+                        valid = false;
+                    }
+                    break;
+
+                default:
+                    break;
             }
-            else if (ch == ')' || ch == '}' || ch == ']')
+
+            if (!valid)
             {
-                if (stack.isEmpty())
-                {
-                    valid = false;
-                    break;
-                }
-                char top = stack.pop();
-                if ((ch == ')' && top != '(') || (ch == '}' && top != '{') || (ch == ']' && top != '['))
-                {
-                    valid = false;
-                    break;
-                }
+                break;
             }
         }
 
@@ -41,6 +56,7 @@ public class ParenthesesValidator
         {
             valid = false;
         }
+
         if (valid)
         {
             System.out.println("Parentheses are Balanced.");
