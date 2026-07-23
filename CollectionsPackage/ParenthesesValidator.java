@@ -15,9 +15,8 @@ public class ParenthesesValidator
         Stack<Character> stack = new Stack<>();
         boolean valid = true;
 
-        for (int i = 0; i < code.length(); i++)
+        for (char ch : code.toCharArray())
         {
-            char ch = code.charAt(i);
             if (ch == '(' || ch == '{' || ch == '[')
             {
                 stack.push(ch);
