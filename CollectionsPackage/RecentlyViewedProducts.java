@@ -136,7 +136,14 @@ public class RecentlyViewedProducts
         sc.nextLine();
         System.out.print("Enter Product Name : ");
         name = sc.nextLine();
-        products.putIfAbsent(id, name);
+        if (products.putIfAbsent(id, name) == null)
+        {
+            System.out.println("Product Added");
+        }
+        else
+        {
+            System.out.println("Product ID Already Exists");
+        }
         System.out.println();
 
         System.out.println("===== Replace the name of an existing product. =====");
