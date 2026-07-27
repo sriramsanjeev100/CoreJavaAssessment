@@ -13,11 +13,7 @@ public class CustomerMain
                 new Customer(3,"John","johnshibu@gmail.com","Kochi","pass789",true));
 
         List<CustomerDTO> dtoList = customers.stream()
-                .map(c -> new CustomerDTO(
-                        c.getId(),
-                        c.getName(),
-                        c.getEmail(),
-                        c.getAddress()))
+                .map(CustomerDTO::new)
                 .toList();
 
         dtoList.forEach(System.out::println);
