@@ -36,13 +36,6 @@ public class BankAccount
         }
     }
 
-    public synchronized void checkBalance()
-    {
-        System.out.println("\n===== Balance Enquiry =====");
-        System.out.println("Thread : " + Thread.currentThread().getName());
-        System.out.println("Current Balance : $" + balance);
-    }
-
     public synchronized double getBalance()
     {
         return balance;

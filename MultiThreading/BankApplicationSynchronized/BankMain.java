@@ -22,7 +22,7 @@ public class BankMain
 
         Thread customer3 = new Thread(() ->
         {
-            account.checkBalance();
+            account.getBalance();
         }, "Customer 3");
 
         customer1.start();
