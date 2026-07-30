@@ -1,4 +1,4 @@
-package MultiThreading.FoodDeliveryCachedThreadPool;
+package MultiThreading.CachedThreadPool.FoodDelivery;
 
 public class FoodOrder
 {

@@ -1,6 +1,6 @@
-package MultiThreading.NotificationServiceCachedThreadPool;
+package MultiThreading.CachedThreadPool.NotificationService;
 
-public class NotificationService
+public class Notification
 {
     public void sendNotification(String customerName)
     {

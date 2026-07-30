@@ -1,21 +1,21 @@
-package MultiThreading.FoodDeliveryCachedThreadPool;
+package MultiThreading.CachedThreadPool.NotificationService;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class FoodDeliveryMain
+public class NotificationMain
 {
     public static void main(String[] args)
     {
-        FoodOrder order = new FoodOrder();
+        Notification notification = new Notification();
         ExecutorService executor = Executors.newCachedThreadPool();
 
-        for (int i = 1; i <= 15; i++)
+        for (int i = 1; i <= 20; i++)
         {
             String customerName = "Customer " + i;
             executor.execute(() ->
             {
-                order.processOrder(customerName);
+                notification.sendNotification(customerName);
             });
         }
         executor.shutdown();
