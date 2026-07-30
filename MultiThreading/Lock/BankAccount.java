@@ -20,7 +20,7 @@ public class BankAccount
         {
             balance += amount;
 
-            return customerName + " deposited Rs." + amount + "\nCurrent Balance : Rs." + balance;
+            return customerName + " deposited Rs." + amount + "\nCurrent Balance: Rs." + balance;
         }
         finally
         {
@@ -36,7 +36,7 @@ public class BankAccount
             if (balance >= amount)
             {
                 balance -= amount;
-                return customerName + " withdrew Rs." + amount + "\nCurrent Balance : Rs." + balance;
+                return customerName + " withdrew Rs." + amount + "\nCurrent Balance: Rs." + balance;
             }
 
             return customerName + " - Insufficient Balance";
@@ -49,6 +49,14 @@ public class BankAccount
 
     public double getBalance()
     {
-        return balance;
+        lock.lock();
+        try
+        {
+            return balance;
+        }
+        finally
+        {
+            lock.unlock();
+        }
     }
 }

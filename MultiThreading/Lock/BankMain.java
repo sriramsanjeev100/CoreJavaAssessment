@@ -2,6 +2,7 @@ package MultiThreading.Lock;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class BankMain
 {
@@ -10,7 +11,7 @@ public class BankMain
         BankAccount account = new BankAccount(20000);
 
         System.out.println("===== Initial Balance =====");
-        System.out.println("Current Balance : Rs." + account.getBalance());
+        System.out.println("Current Balance: Rs." + account.getBalance());
         System.out.println();
 
         ExecutorService executor = Executors.newFixedThreadPool(3);
@@ -45,10 +46,16 @@ public class BankMain
         });
 
         executor.shutdown();
-        while (!executor.isTerminated())
-        {        }
+        try
+        {
+            executor.awaitTermination(5, TimeUnit.SECONDS);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
 
         System.out.println("===== Final Balance =====");
-        System.out.println("Current Balance : Rs." + account.getBalance());
+        System.out.println("Final Balance: Rs." + account.getBalance());
     }
 }
