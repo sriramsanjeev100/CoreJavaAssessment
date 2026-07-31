@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Bus
 {
     private int availableSeats = 5;
-    Lock lock = new ReentrantLock();
+    private final Lock lock = new ReentrantLock();
 
     public void bookSeat(String passengerName, int seatsRequested)
     {
