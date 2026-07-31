@@ -1,4 +1,4 @@
-package MultiThreading.Lock;
+package MultiThreading.Lock.BankApplication;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

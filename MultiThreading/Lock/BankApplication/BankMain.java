@@ -1,4 +1,4 @@
-package MultiThreading.Lock;
+package MultiThreading.Lock.BankApplication;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
