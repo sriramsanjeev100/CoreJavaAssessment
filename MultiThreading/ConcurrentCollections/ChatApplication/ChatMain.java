@@ -40,7 +40,7 @@ public class ChatMain
 
         try
         {
-            executor.awaitTermination(10, TimeUnit.SECONDS);
+            executor.awaitTermination(5, TimeUnit.SECONDS);
         }
         catch (InterruptedException e)
         {

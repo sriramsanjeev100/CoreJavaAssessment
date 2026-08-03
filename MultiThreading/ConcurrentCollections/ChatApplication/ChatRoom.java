@@ -32,7 +32,8 @@ public class ChatRoom
 
     public void displayUsers()
     {
-        System.out.println("\n===== Active Users =====");
+        System.out.println();
+        System.out.println("===== Active Users =====");
 
         for (String user : activeUsers.keySet())
         {
