@@ -5,8 +5,7 @@ import java.util.concurrent.Executors;
 
 public class ExecutorServiceSingleton
 {
-    private static ExecutorService executor =
-            Executors.newFixedThreadPool(4);
+    private static ExecutorService executor = Executors.newFixedThreadPool(4);
 
     private ExecutorServiceSingleton()
     {
