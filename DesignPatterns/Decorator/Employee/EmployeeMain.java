@@ -10,11 +10,10 @@ public class EmployeeMain
         employee = new TransportDecorator(employee);
         employee = new MealCouponDecorator(employee);
 
-        System.out.println("===== Employee Details =====");
-        System.out.println(employee.getDetails());
-
         System.out.println();
-
+        System.out.println("===== Employee Details =====");
+        System.out.println();
+        System.out.println(employee.getDetails());
         System.out.println("Final Salary : Rs." + employee.getSalary());
     }
 }
