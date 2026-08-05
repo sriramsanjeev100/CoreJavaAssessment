@@ -16,8 +16,17 @@ public class SalaryMain
         SalaryUtility.addSalary(objectSalary);
 
         System.out.println();
-        System.out.println("Integer List : " + integerSalary);
-        System.out.println("Number List : " + numberSalary);
-        System.out.println("Object List : " + objectSalary);
+        System.out.println("===== Integer List =====");
+        SalaryUtility.displaySalary(integerSalary);
+
+        System.out.println();
+
+        System.out.println("===== Number List =====");
+        SalaryUtility.displaySalary(numberSalary);
+
+        System.out.println();
+
+        System.out.println("===== Object List =====");
+        SalaryUtility.displaySalary(objectSalary);
     }
 }

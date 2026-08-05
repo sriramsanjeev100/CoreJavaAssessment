@@ -9,7 +9,14 @@ public class SalaryUtility
         salaries.add(25000);
         salaries.add(30000);
         salaries.add(35000);
-
         System.out.println("Salary values added successfully.");
+    }
+
+    public static void displaySalary(List<?> salaries)
+    {
+        for (Object salary : salaries)
+        {
+            System.out.println(salary);
+        }
     }
 }
