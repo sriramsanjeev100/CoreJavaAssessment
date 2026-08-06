@@ -14,19 +14,18 @@ public class Book
     private int totalCopies;
     private int availableCopies;
 
-    public Book(String title, String author, String category,
-                int totalCopies, int availableCopies)
+    public Book()
+    {
+
+    }
+
+    public Book(String title, String author, String category, int totalCopies, int availableCopies)
     {
         this.title = title;
         this.author = author;
         this.category = category;
         this.totalCopies = totalCopies;
         this.availableCopies = availableCopies;
-    }
-
-    public Book()
-    {
-
     }
 
     public int getBookId()
