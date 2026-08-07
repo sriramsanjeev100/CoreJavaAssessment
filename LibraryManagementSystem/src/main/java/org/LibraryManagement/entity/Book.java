@@ -10,19 +10,19 @@ public class Book
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int bookId;
+    private Integer bookId;
     private String title;
     private String author;
     private String category;
-    private int totalCopies;
-    private int availableCopies;
+    private Integer totalCopies;
+    private Integer availableCopies;
 
     public Book()
     {
 
     }
 
-    public Book(String title, String author, String category, int totalCopies, int availableCopies)
+    public Book(String title, String author, String category, Integer totalCopies, Integer availableCopies)
     {
         this.title = title;
         this.author = author;
@@ -76,7 +76,7 @@ public class Book
         return totalCopies;
     }
 
-    public void setTotalCopies(int totalCopies)
+    public void setTotalCopies(Integer totalCopies)
     {
         this.totalCopies = totalCopies;
     }
@@ -86,7 +86,7 @@ public class Book
         return availableCopies;
     }
 
-    public void setAvailableCopies(int availableCopies)
+    public void setAvailableCopies(Integer availableCopies)
     {
         this.availableCopies = availableCopies;
     }

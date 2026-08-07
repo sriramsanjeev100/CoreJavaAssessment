@@ -6,7 +6,7 @@ public class Member
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int memberId;
+    private Integer memberId;
     private String memberName;
     private String phone;
 
@@ -26,7 +26,7 @@ public class Member
         return memberId;
     }
 
-    public void setMemberId(int memberId)
+    public void setMemberId(Integer memberId)
     {
         this.memberId = memberId;
     }
