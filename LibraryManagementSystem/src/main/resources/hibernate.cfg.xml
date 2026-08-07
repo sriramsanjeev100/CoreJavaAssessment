@@ -41,6 +41,7 @@
         </property>
 
         <mapping class="org.LibraryManagement.entity.Book"/>
+        <mapping class="org.LibraryManagement.entity.Member"/>
 
     </session-factory>
 
