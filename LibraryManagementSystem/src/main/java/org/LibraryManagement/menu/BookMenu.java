@@ -1,6 +1,7 @@
 package org.LibraryManagement.menu;
 
 import org.LibraryManagement.entity.Book;
+import org.LibraryManagement.exception.BookNotFoundException;
 import org.LibraryManagement.service.BookService;
 
 import java.util.List;
@@ -103,14 +104,14 @@ public class BookMenu
         System.out.print("Enter Book ID : ");
         int searchId = sc.nextInt();
 
-        Book searchedBook = service.findBookById(searchId);
-        if (searchedBook != null)
+        try
         {
-            System.out.println(searchedBook);
+            Book book = service.findBookById(searchId);
+            System.out.println(book);
         }
-        else
+        catch (BookNotFoundException e)
         {
-            System.out.println("Book Not Found");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -119,77 +120,77 @@ public class BookMenu
         System.out.print("Enter Book ID to Update : ");
         int updateId = sc.nextInt();
         sc.nextLine();
-
-        Book book = service.findBookById(updateId);
-
-        if (book == null)
+        try
         {
-            System.out.println("Book Not Found");
-            return;
-        }
+            Book book = service.findBookById(updateId);
 
-        int choice;
+            int choice;
 
-        do
-        {
-            System.out.println("\n===== Update Book =====");
-            System.out.println("1. Update Title");
-            System.out.println("2. Update Author");
-            System.out.println("3. Update Category");
-            System.out.println("4. Update Total Copies");
-            System.out.println("5. Update Available Copies");
-            System.out.println("6. Save and Exit");
-            System.out.print("Enter Choice : ");
-
-            choice = sc.nextInt();
-            sc.nextLine();
-
-            switch (choice)
+            do
             {
-                case 1:
+                System.out.println("\n===== Update Book =====");
+                System.out.println("1. Update Title");
+                System.out.println("2. Update Author");
+                System.out.println("3. Update Category");
+                System.out.println("4. Update Total Copies");
+                System.out.println("5. Update Available Copies");
+                System.out.println("6. Save and Exit");
+                System.out.print("Enter Choice : ");
 
-                    System.out.print("Enter New Title : ");
-                    book.setTitle(sc.nextLine());
-                    break;
+                choice = sc.nextInt();
+                sc.nextLine();
 
-                case 2:
+                switch (choice)
+                {
+                    case 1:
 
-                    System.out.print("Enter New Author : ");
-                    book.setAuthor(sc.nextLine());
-                    break;
+                        System.out.print("Enter New Title : ");
+                        book.setTitle(sc.nextLine());
+                        break;
 
-                case 3:
+                    case 2:
 
-                    System.out.print("Enter New Category : ");
-                    book.setCategory(sc.nextLine());
-                    break;
+                        System.out.print("Enter New Author : ");
+                        book.setAuthor(sc.nextLine());
+                        break;
 
-                case 4:
+                    case 3:
 
-                    System.out.print("Enter New Total Copies : ");
-                    book.setTotalCopies(sc.nextInt());
-                    sc.nextLine();
-                    break;
+                        System.out.print("Enter New Category : ");
+                        book.setCategory(sc.nextLine());
+                        break;
 
-                case 5:
+                    case 4:
 
-                    System.out.print("Enter New Available Copies : ");
-                    book.setAvailableCopies(sc.nextInt());
-                    sc.nextLine();
-                    break;
+                        System.out.print("Enter New Total Copies : ");
+                        book.setTotalCopies(sc.nextInt());
+                        sc.nextLine();
+                        break;
 
-                case 6:
+                    case 5:
 
-                    service.updateBook(book);
-                    System.out.println("Book Updated Successfully");
-                    break;
+                        System.out.print("Enter New Available Copies : ");
+                        book.setAvailableCopies(sc.nextInt());
+                        sc.nextLine();
+                        break;
 
-                default:
+                    case 6:
 
-                    System.out.println("Invalid Choice");
-            }
+                        service.updateBook(book);
+                        System.out.println("Book Updated Successfully");
+                        break;
 
-        } while (choice != 6);
+                    default:
+
+                        System.out.println("Invalid Choice");
+                }
+
+            } while (choice != 6);
+        }
+        catch (BookNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void deleteBook(Scanner sc)

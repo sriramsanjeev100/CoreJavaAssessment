@@ -3,6 +3,7 @@ package org.LibraryManagement.service;
 import org.LibraryManagement.dao.BookDAO;
 import org.LibraryManagement.dao.BookDAOImpl;
 import org.LibraryManagement.entity.Book;
+import org.LibraryManagement.exception.BookNotFoundException;
 
 import java.util.List;
 
@@ -25,9 +26,15 @@ public class BookService
         bookDAO.delete(bookId);
     }
 
-    public Book findBookById(int bookId)
+    public Book findBookById(int bookId) throws BookNotFoundException
     {
-        return bookDAO.findById(bookId);
+        Book book = bookDAO.findById(bookId);
+        if(book == null)
+        {
+            throw new BookNotFoundException("Book with ID " + bookId + " not found.");
+        }
+
+        return book;
     }
 
     public List<Book> findAllBooks()

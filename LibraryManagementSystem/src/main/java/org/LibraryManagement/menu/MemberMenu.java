@@ -1,6 +1,7 @@
 package org.LibraryManagement.menu;
 
 import org.LibraryManagement.entity.Member;
+import org.LibraryManagement.exception.MemberNotFoundException;
 import org.LibraryManagement.service.MemberService;
 
 import java.util.List;
@@ -97,14 +98,14 @@ public class MemberMenu
         int memberId = sc.nextInt();
         sc.nextLine();
 
-        Member member = service.findMemberById(memberId);
-        if(member != null)
+        try
         {
+            Member member = service.findMemberById(memberId);
             System.out.println(member);
         }
-        else
+        catch (MemberNotFoundException e)
         {
-            System.out.println("Member Not Found");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -114,51 +115,54 @@ public class MemberMenu
         int memberId = sc.nextInt();
         sc.nextLine();
 
-        Member member = service.findMemberById(memberId);
-        if(member == null)
+        try
         {
-            System.out.println("Member Not Found");
-            return;
-        }
+            Member member = service.findMemberById(memberId);
 
-        int choice;
-        do
-        {
-            System.out.println("\n===== Update Member =====");
-            System.out.println("1. Update Name");
-            System.out.println("2. Update Phone");
-            System.out.println("3. Save and Exit");
+            int choice;
 
-            System.out.print("Enter Choice : ");
-            choice = sc.nextInt();
-            sc.nextLine();
-
-            switch(choice)
+            do
             {
-                case 1:
+                System.out.println("\n===== Update Member =====");
+                System.out.println("1. Update Name");
+                System.out.println("2. Update Phone");
+                System.out.println("3. Save and Exit");
 
-                    System.out.print("Enter New Name : ");
-                    member.setMemberName(sc.nextLine());
-                    break;
+                System.out.print("Enter Choice : ");
+                choice = sc.nextInt();
+                sc.nextLine();
 
-                case 2:
+                switch(choice)
+                {
+                    case 1:
 
-                    System.out.print("Enter New Phone : ");
-                    member.setPhone(sc.nextLine());
-                    break;
+                        System.out.print("Enter New Name : ");
+                        member.setMemberName(sc.nextLine());
+                        break;
 
-                case 3:
+                    case 2:
 
-                    service.updateMember(member);
-                    System.out.println("Member Updated Successfully");
-                    break;
+                        System.out.print("Enter New Phone : ");
+                        member.setPhone(sc.nextLine());
+                        break;
 
-                default:
+                    case 3:
 
-                    System.out.println("Invalid Choice");
-            }
+                        service.updateMember(member);
+                        System.out.println("Member Updated Successfully");
+                        break;
 
-        } while(choice != 3);
+                    default:
+
+                        System.out.println("Invalid Choice");
+                }
+
+            } while(choice != 3);
+        }
+        catch (MemberNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void deleteMember(Scanner sc)

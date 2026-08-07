@@ -3,6 +3,7 @@ package org.LibraryManagement.service;
 import org.LibraryManagement.dao.MemberDAO;
 import org.LibraryManagement.dao.MemberDAOImpl;
 import org.LibraryManagement.entity.Member;
+import org.LibraryManagement.exception.MemberNotFoundException;
 
 import java.util.List;
 
@@ -25,9 +26,15 @@ public class MemberService
         memberDAO.delete(memberId);
     }
 
-    public Member findMemberById(int memberId)
+    public Member findMemberById(int memberId) throws MemberNotFoundException
     {
-        return memberDAO.findById(memberId);
+        Member member = memberDAO.findById(memberId);
+        if(member == null)
+        {
+            throw new MemberNotFoundException("Member with ID " + memberId + " not found.");
+        }
+
+        return member;
     }
 
     public List<Member> findAllMembers()
