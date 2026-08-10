@@ -6,7 +6,7 @@ import org.LibraryManagement.util.HibernateUtil;
 
 import java.util.Scanner;
 
-public class Main
+public class Mainno
 {
     public static void main(String[] args)
     {
