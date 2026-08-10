@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class AbstractGenericDAO<T, ID extends Serializable> implements GenericDAO<T, ID>
 {
@@ -20,9 +21,20 @@ public abstract class AbstractGenericDAO<T, ID extends Serializable> implements 
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.persist(entity);
-        transaction.commit();
-        session.close();
+        try
+        {
+            session.persist(entity);
+            transaction.commit();
+        }
+        catch (Exception e)
+        {
+            transaction.rollback();
+            throw e;
+        }
+        finally
+        {
+            session.close();
+        }
     }
 
     @Override
@@ -30,9 +42,20 @@ public abstract class AbstractGenericDAO<T, ID extends Serializable> implements 
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.merge(entity);
-        transaction.commit();
-        session.close();
+        try
+        {
+            session.merge(entity);
+            transaction.commit();
+        }
+        catch (Exception e)
+        {
+            transaction.rollback();
+            throw e;
+        }
+        finally
+        {
+            session.close();
+        }
     }
 
     @Override
@@ -40,33 +63,54 @@ public abstract class AbstractGenericDAO<T, ID extends Serializable> implements 
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        T entity = session.find(entityClass, id);
-        if(entity != null)
+        try
         {
-            session.remove(entity);
+            T entity = session.find(entityClass, id);
+
+            if (entity != null)
+            {
+                session.remove(entity);
+            }
+
+            transaction.commit();
         }
-        transaction.commit();
-        session.close();
+        catch (Exception e)
+        {
+            transaction.rollback();
+            throw e;
+        }
+        finally
+        {
+            session.close();
+        }
     }
 
     @Override
-    public T findById(ID id)
+    public Optional<T> findById(ID id)
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        T entity = session.find(entityClass, id);
-        session.close();
-        return entity;
+        try
+        {
+            T entity = session.find(entityClass, id);
+            return Optional.ofNullable(entity);
+        }
+        finally
+        {
+            session.close();
+        }
     }
 
     @Override
     public List<T> findAll()
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<T> entities = session
-                .createQuery("FROM " + entityClass.getSimpleName(), entityClass)
-                .list();
-
-        session.close();
-        return entities;
+        try
+        {
+            return session.createQuery("FROM " + entityClass.getSimpleName(), entityClass).list();
+        }
+        finally
+        {
+            session.close();
+        }
     }
 }

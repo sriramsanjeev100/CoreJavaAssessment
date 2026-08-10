@@ -1,8 +1,5 @@
 package org.LibraryManagement.menu;
 
-import org.LibraryManagement.exception.BookNotFoundException;
-import org.LibraryManagement.exception.BookUnavailableException;
-import org.LibraryManagement.exception.MemberNotFoundException;
 import org.LibraryManagement.service.BorrowService;
 
 import java.util.Scanner;
@@ -10,14 +7,19 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class BorrowMenu
+public class BorrowMenu implements Menu
 {
-    private static final BorrowService service = new BorrowService();
+    private final BorrowService service = new BorrowService();
 
-    public static void borrowBook(Scanner sc)
+    @Override
+    public void showMenu(Scanner sc)
+    {
+        borrowBook(sc);
+    }
+
+    public void borrowBook(Scanner sc)
     {
         ExecutorService executor = Executors.newFixedThreadPool(3);
-
         try
         {
             executor.submit(() ->
@@ -26,7 +28,7 @@ public class BorrowMenu
                 {
                     service.borrowBook(1, 3);
                 }
-                catch (MemberNotFoundException | BookNotFoundException | BookUnavailableException e)
+                catch (Exception e)
                 {
                     System.out.println(e.getMessage());
                 }
@@ -38,7 +40,7 @@ public class BorrowMenu
                 {
                     service.borrowBook(3, 3);
                 }
-                catch (MemberNotFoundException | BookNotFoundException | BookUnavailableException e)
+                catch (Exception e)
                 {
                     System.out.println(e.getMessage());
                 }
@@ -50,7 +52,7 @@ public class BorrowMenu
                 {
                     service.borrowBook(4, 4);
                 }
-                catch (MemberNotFoundException | BookNotFoundException | BookUnavailableException e)
+                catch (Exception e)
                 {
                     System.out.println(e.getMessage());
                 }
@@ -59,6 +61,7 @@ public class BorrowMenu
         finally
         {
             executor.shutdown();
+
             try
             {
                 executor.awaitTermination(5, TimeUnit.SECONDS);

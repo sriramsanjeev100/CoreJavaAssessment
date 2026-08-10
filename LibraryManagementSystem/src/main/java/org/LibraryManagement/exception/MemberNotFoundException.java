@@ -1,6 +1,6 @@
 package org.LibraryManagement.exception;
 
-public class MemberNotFoundException extends Exception
+public class MemberNotFoundException extends RuntimeException
 {
     public MemberNotFoundException(String message)
     {

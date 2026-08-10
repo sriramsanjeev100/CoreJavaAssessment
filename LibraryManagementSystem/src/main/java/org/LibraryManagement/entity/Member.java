@@ -1,5 +1,7 @@
 package org.LibraryManagement.entity;
-import jakarta.persistence.*;
+
+
+import jakarta.persistence.*;   //When all 5 are imported, automatic conversion to *
 
 @Entity
 public class Member
@@ -7,12 +9,15 @@ public class Member
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer memberId;
+
+    @Column(nullable = false, length = 100)
     private String memberName;
+
+    @Column(nullable = false, unique = true, length = 15)
     private String phone;
 
     public Member()
     {
-
     }
 
     public Member(String memberName, String phone)
@@ -21,7 +26,7 @@ public class Member
         this.phone = phone;
     }
 
-    public int getMemberId()
+    public Integer getMemberId()
     {
         return memberId;
     }

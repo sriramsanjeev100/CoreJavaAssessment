@@ -7,11 +7,12 @@ import org.LibraryManagement.service.MemberService;
 import java.util.List;
 import java.util.Scanner;
 
-public class MemberMenu
+public class MemberMenu implements Menu
 {
     private static final MemberService service = new MemberService();
 
-    public static void showMenu(Scanner sc)
+    @Override
+    public void showMenu(Scanner sc)
     {
         int choice;
 
@@ -31,33 +32,14 @@ public class MemberMenu
 
             switch(choice)
             {
-                case 1:
-                    addMember(sc);
-                    break;
-
-                case 2:
-                    displayMembers();
-                    break;
-
-                case 3:
-                    searchMember(sc);
-                    break;
-
-                case 4:
-                    updateMember(sc);
-                    break;
-
-                case 5:
-                    deleteMember(sc);
-                    break;
-
-                case 6:
-                    break;
-
-                default:
-                    System.out.println("Invalid Choice");
+                case 1 -> addMember(sc);
+                case 2 -> displayMembers();
+                case 3 -> searchMember(sc);
+                case 4 -> updateMember(sc);
+                case 5 -> deleteMember(sc);
+                case 6 -> System.out.println("Returning...");
+                default -> System.out.println("Invalid Choice");
             }
-
         } while(choice != 6);
     }
 

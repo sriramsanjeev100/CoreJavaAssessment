@@ -1,6 +1,6 @@
 package org.LibraryManagement.exception;
 
-public class BookUnavailableException extends Exception
+public class BookUnavailableException extends RuntimeException
 {
     public BookUnavailableException(String message)
     {

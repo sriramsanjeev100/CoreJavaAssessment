@@ -1,5 +1,6 @@
 package org.LibraryManagement.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,15 +12,24 @@ public class Book
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookId;
+
+    @Column(nullable = false, length = 100)
     private String title;
+
+    @Column(nullable = false, length = 100)
     private String author;
+
+    @Column(nullable = false, length = 50)
     private String category;
+
+    @Column(nullable = false)
     private Integer totalCopies;
+
+    @Column(nullable = false)
     private Integer availableCopies;
 
     public Book()
     {
-
     }
 
     public Book(String title, String author, String category, Integer totalCopies, Integer availableCopies)
@@ -31,12 +41,12 @@ public class Book
         this.availableCopies = availableCopies;
     }
 
-    public int getBookId()
+    public Integer getBookId()
     {
         return bookId;
     }
 
-    public void setBookId(int bookId)
+    public void setBookId(Integer bookId)
     {
         this.bookId = bookId;
     }
@@ -71,7 +81,7 @@ public class Book
         this.category = category;
     }
 
-    public int getTotalCopies()
+    public Integer getTotalCopies()
     {
         return totalCopies;
     }
@@ -81,7 +91,7 @@ public class Book
         this.totalCopies = totalCopies;
     }
 
-    public int getAvailableCopies()
+    public Integer getAvailableCopies()
     {
         return availableCopies;
     }

@@ -7,10 +7,11 @@ import org.LibraryManagement.service.BookService;
 import java.util.List;
 import java.util.Scanner;
 
-public class BookMenu
+public class BookMenu implements Menu
 {
     private static final BookService service = new BookService();
-    public static void showMenu(Scanner sc)
+    @Override
+    public void showMenu(Scanner sc)
     {
         int choice;
         do
@@ -29,33 +30,14 @@ public class BookMenu
 
             switch(choice)
             {
-                case 1:
-                    addBook(sc);
-                    break;
-
-                case 2:
-                    displayBooks();
-                    break;
-
-                case 3:
-                    searchBook(sc);
-                    break;
-
-                case 4:
-                    updateBook(sc);
-                    break;
-
-                case 5:
-                    deleteBook(sc);
-                    break;
-
-                case 6:
-                    break;
-
-                default:
-                    System.out.println("Invalid Choice");
+                case 1 -> addBook(sc);
+                case 2 -> displayBooks();
+                case 3 -> searchBook(sc);
+                case 4 -> updateBook(sc);
+                case 5 -> deleteBook(sc);
+                case 6 -> System.out.println("Returning...");
+                default -> System.out.println("Invalid Choice");
             }
-
         } while(choice != 6);
     }
 

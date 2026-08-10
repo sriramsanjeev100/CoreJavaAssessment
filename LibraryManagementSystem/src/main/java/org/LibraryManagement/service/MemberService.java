@@ -21,20 +21,15 @@ public class MemberService
         memberDAO.update(member);
     }
 
-    public void deleteMember(int memberId)
+    public void deleteMember(Integer memberId)
     {
         memberDAO.delete(memberId);
     }
 
-    public Member findMemberById(int memberId) throws MemberNotFoundException
+    public Member findMemberById(Integer memberId)
     {
-        Member member = memberDAO.findById(memberId);
-        if(member == null)
-        {
-            throw new MemberNotFoundException("Member with ID " + memberId + " not found.");
-        }
-
-        return member;
+        return memberDAO.findById(memberId)
+                .orElseThrow(() -> new MemberNotFoundException("Member with ID " + memberId + " not found."));
     }
 
     public List<Member> findAllMembers()

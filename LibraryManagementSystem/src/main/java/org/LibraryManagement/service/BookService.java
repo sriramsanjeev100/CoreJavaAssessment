@@ -21,20 +21,15 @@ public class BookService
         bookDAO.update(book);
     }
 
-    public void deleteBook(int bookId)
+    public void deleteBook(Integer bookId)
     {
         bookDAO.delete(bookId);
     }
 
-    public Book findBookById(int bookId) throws BookNotFoundException
+    public Book findBookById(Integer bookId)
     {
-        Book book = bookDAO.findById(bookId);
-        if(book == null)
-        {
-            throw new BookNotFoundException("Book with ID " + bookId + " not found.");
-        }
-
-        return book;
+        return bookDAO.findById(bookId)
+                .orElseThrow(() -> new BookNotFoundException("Book with ID " + bookId + " not found."));
     }
 
     public List<Book> findAllBooks()
